@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package cash.z.wallet.sdk.rpc;
+
+service CompactTxStreamer {
+  rpc GetLightdInfo(Empty) returns (LightdInfo);
+  rpc GetLatestBlock(ChainSpec) returns (BlockID);
+  rpc GetBlockRange(BlockRange) returns (stream CompactBlock);
+}
+
+message Empty {}
+
+message ChainSpec {
+  BlockID start = 1;
+  BlockID end = 2;
+}
+
+message BlockID {
+  uint64 height = 1;
+  bytes hash = 2;
+}
+
+message BlockRange {
+  BlockID start = 1;
+  BlockID end = 2;
+}
+
+message CompactBlock {
+  uint64 protoVersion = 1;
+  uint64 height = 2;
+  bytes hash = 3;
+  bytes prevHash = 4;
+  uint32 time = 5;
+}
+
+message LightdInfo {
+  string version = 1;
+  string vendor = 2;
+  string taddrSupport = 3;
+  string chain = 4;
+  uint64 saplingActivationHeight = 5;
+}
+

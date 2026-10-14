@@ -1,0 +1,17 @@
+{
+  "name": "zebl-lightwalletd-grpc-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Read-only Zcash testnet lightwalletd gRPC starter for ZEBL Cape Town",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.4",
+    "@grpc/proto-loader": "^0.7.13"
+  }
+}
