@@ -33,37 +33,43 @@ By the end of the lab, learners can:
 | Time | Day 1 — Understand privacy | Day 2 — Build and share |
 |---|---|---|
 | 09:00–09:30 | Welcome, introductions, community agreements | Recap and team formation |
-| 09:30–10:45 | Privacy rights and digital identity | Wallet and lightwalletd integration |
-| 11:00–12:30 | Money, hashes, and zero-knowledge intuition | Shielded Arcade challenge |
+| 09:30–10:45 | Privacy rights and digital identity | Node.js lightwalletd starter (default prototype path) |
+| 11:00–12:30 | Money, hashes, and zero-knowledge intuition | Shielded Arcade: send and verify |
 | 13:30–14:30 | Zcash architecture and address types | Viewing keys and selective disclosure |
-| 14:45–16:00 | Testnet wallet setup | Build a small Node.js or mobile prototype |
+| 14:45–16:00 | Testnet wallet setup (install, UA, faucet) | Build a small Node.js prototype |
 | 16:00–16:45 | Reflection and troubleshooting | Demo preparation |
 | 16:45–17:00 | Check-out | Demos, feedback, and next steps |
 
+Wallet setup is Day 1 only. Shielded send/verify is Day 2. Mobile prototypes are optional and need facilitator approval; see the [mobile SDK guide](starters/mobile-sdk-guide.md).
+
 ## Quick start: local testnet access
 
-The public lightwalletd endpoint and faucet can change. Facilitators should verify current values before the workshop and publish them in the room. Never ask students to trust an endpoint that does not use TLS.
+The public lightwalletd endpoint and faucet can change. Facilitators should complete the [facilitator runbook](docs/facilitator-runbook.md) before the workshop and publish approved values in the room. Never ask students to trust an endpoint that does not use TLS.
 
 ### Connect a wallet
 
-1. Install a testnet-capable wallet such as Nighthawk or YWallet from its official release channel. A CLI wallet can also be used by experienced learners.
+1. Install a testnet-capable wallet from its official release channel. The classroom default is **Zingo** (mobile or desktop) with **testnet** selected. Experienced learners may use `zingo-cli`. Do **not** use Nighthawk.
 2. Select **testnet** (`testnet`/`Zcash testnet`), not mainnet.
-3. In advanced server settings, enter the facilitator-approved lightwalletd hostname and TLS port. A common lightwalletd port is `9067`; the exact host is deployment-specific.
+3. In advanced server settings, enter the facilitator-approved lightwalletd hostname and **TLS** port. A common lightwalletd port is `9067` or `443`; the exact host is deployment-specific.
 4. Confirm the wallet reports a testnet network and a recent block height before requesting funds.
 
 ### Run a local lightwalletd (facilitators)
 
 Run a local `zcashd` testnet node first, then point lightwalletd at its RPC interface. The exact binaries and flags depend on the release being used; use the version-matched upstream documentation.
 
+Bind only to loopback for an insecure classroom node:
+
 ```bash
 ./lightwalletd \
   --zcash-conf=/path/to/zcash.conf \
-  --grpc-bind-addr=0.0.0.0:9067 \
-  --http-bind-addr=0.0.0.0:9068 \
+  --grpc-bind-addr=127.0.0.1:9067 \
+  --http-bind-addr=127.0.0.1:9068 \
   --no-tls-very-insecure
 ```
 
-`--no-tls-very-insecure` is suitable only for an isolated classroom LAN or local development. For a shared or public endpoint, configure TLS certificates and use the secure gRPC port. Restrict firewall access and do not expose node RPC credentials.
+`--no-tls-very-insecure` is suitable only on `127.0.0.1` for a facilitator laptop or an isolated workstation. Do not bind `0.0.0.0` without TLS. For a shared classroom or public endpoint, configure TLS certificates, use the secure gRPC port, restrict firewall access, and do not expose node RPC credentials.
+
+Students then run the [Node.js starter](starters/nodejs-grpc-starter/README.md) with `LIGHTWALLETD_INSECURE=true` only when the URL is loopback.
 
 ### Receive testnet TAZ
 
@@ -79,20 +85,23 @@ Run a local `zcashd` testnet node first, then point lightwalletd at its RPC inte
 
 - [Day 1: ZK fundamentals](docs/day1-zk-fundamentals.md)
 - [Day 2: Hackathon guide](docs/day2-hackathon-guide.md)
+- [Facilitator runbook](docs/facilitator-runbook.md)
 - [Architecture diagrams](docs/architecture-diagrams.md)
 
 ### Core modules
 
 - [01 — Privacy rights and math](modules/01-privacy-rights-and-math.md)
 - [02 — Zcash architecture and addresses](modules/02-zcash-architecture-and-addresses.md)
-- [03 — Shielded Arcade hands-on](modules/03-shielded-arcade-hands-on.md)
+- [03 — Shielded Arcade overview](modules/03-shielded-arcade-hands-on.md)
+- [03a — Day 1 wallet setup](modules/03a-day1-wallet-setup.md)
+- [03b — Day 2 shielded send and verify](modules/03b-day2-shielded-payments.md)
 - [04 — Viewing keys and compliance](modules/04-viewing-keys-and-compliance.md)
 
 ### Starters
 
 - [Node.js gRPC starter README](starters/nodejs-grpc-starter/README.md)
 - [Node.js starter package](starters/nodejs-grpc-starter/package.json)
-- [Mobile SDK guide](starters/mobile-sdk-guide.md)
+- [Mobile SDK guide](starters/mobile-sdk-guide.md) (optional path)
 
 ### Safeguarding
 

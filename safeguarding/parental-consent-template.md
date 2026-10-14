@@ -33,4 +33,4 @@ __________________________________________________________________
 **Participant signature:** ________________________ **Date:** __________  
 **Facilitator receiving form:** ____________________ **Date:** __________
 
-This form should be stored securely by the organiser, accessed only by authorised safeguarding staff, and deleted according to the programme’s retention schedule.
+This form should be stored securely by the organiser, accessed only by authorised safeguarding staff, and deleted according to the programme’s retention schedule (set in the facilitator runbook; typically at cohort end plus a short safeguarding window, unless a longer hold is required for an incident). Optional medical notes are used only for on-site safety and are not copied into chat, photos, or git.

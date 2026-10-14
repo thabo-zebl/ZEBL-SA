@@ -10,7 +10,7 @@ This policy protects participants aged 16–22 during ZEBL Cape Town workshops, 
 - Obtain parent/guardian consent for participants aged 16–17.
 - Use two-adult visibility for supervision; avoid isolated one-to-one meetings with minors.
 - Collect the minimum personal data needed for attendance and safety.
-- Keep consent, emergency, and accessibility records confidential.
+- Keep consent, emergency, and accessibility records confidential, stored separately from this repository, and destroyed after the retention period recorded in the facilitator runbook (POPIA: purpose limitation and minimality).
 - Never request seed phrases, spending keys, passwords, identity documents, or real-money transfers.
 
 ## Code of conduct

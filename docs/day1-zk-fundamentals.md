@@ -45,3 +45,9 @@ This is not magic invisibility. Wallets, network metadata, timing, leaked addres
 
 In three sentences, explain how a proof can show “this payment is valid” without showing “every detail of this payment”. Name one kind of metadata that can still leak.
 
+## Afternoon lab (14:45–16:00)
+
+After architecture ([module 02](../modules/02-zcash-architecture-and-addresses.md)), run **wallet setup only**: install a testnet wallet, create a Unified Address, and request TAZ. Do not send peer-to-peer payments today.
+
+Use [03a — Day 1 wallet setup](../modules/03a-day1-wallet-setup.md). Sending and explorer verification are [03b on Day 2](../modules/03b-day2-shielded-payments.md).
+
